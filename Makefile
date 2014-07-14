@@ -151,13 +151,13 @@ $(WORK)/megajson-$(NEW).txt: $(GO_NEW_BIN)
 	$(GO_NEW_BIN) get -u -v -d github.com/benbjohnson/megajson
 	cd $(GOPATH)/src/github.com/benbjohnson/megajson/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
-$(WORK)/netbench-$(OLD).txt: $(GO_OLD_BIN)
-	$(GO_OLD_BIN) get -u -v -d github.com/btracey/netbench
-	cd $(GOPATH)/src/github.com/btracey/netbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
+$(WORK)/nnetbench-$(OLD).txt: $(GO_OLD_BIN)
+	$(GO_OLD_BIN) get -u -v -d github.com/btracey/nnetbench
+	cd $(GOPATH)/src/github.com/btracey/nnetbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
-$(WORK)/netbench-$(NEW).txt: $(GO_NEW_BIN)
-	$(GO_NEW_BIN) get -u -v -d github.com/btracey/netbench
-	cd $(GOPATH)/src/github.com/btracey/netbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
+$(WORK)/nnetbench-$(NEW).txt: $(GO_NEW_BIN)
+	$(GO_NEW_BIN) get -u -v -d github.com/btracey/nnetbench
+	cd $(GOPATH)/src/github.com/btracey/nnetbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
 $(WORK)/snappy-$(OLD).txt: $(GO_OLD_BIN)
 	$(GO_OLD_BIN) get -u -v -d code.google.com/p/snappy-go/snappy
