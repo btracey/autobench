@@ -25,7 +25,7 @@ unexport GOROOT GOBIN
 
 BENCHCMP=$(TOP)/bin/benchcmp
 
-bench: go1 runtime http floats cipher megajson nnetbench snappy
+bench: go1 runtime http floats cipher megajson netbench snappy
 extra: bench bytes strings goquery
 
 go1: $(WORK)/go1-$(OLD).txt $(WORK)/go1-$(NEW).txt $(BENCHCMP)
@@ -60,9 +60,9 @@ megajson: $(WORK)/megajson-$(OLD).txt $(WORK)/megajson-$(NEW).txt $(BENCHCMP)
 	@echo "#megajson"
 	@$(BENCHCMP) $(WORK)/megajson-$(OLD).txt $(WORK)/megajson-$(NEW).txt
 
-nnetbench: $(WORK)/nnetbench-$(OLD).txt $(WORK)/nnetbench-$(NEW).txt $(BENCHCMP)
-	@echo "#nnetbench"
-	@$(BENCHCMP) $(WORK)/nnetbench-$(OLD).txt $(WORK)/nnetbench-$(NEW).txt
+netbench: $(WORK)/netbench-$(OLD).txt $(WORK)/netbench-$(NEW).txt $(BENCHCMP)
+	@echo "#netbench"
+	@$(BENCHCMP) $(WORK)/netbench-$(OLD).txt $(WORK)/netbench-$(NEW).txt
 
 snappy: $(WORK)/snappy-$(OLD).txt $(WORK)/snappy-$(NEW).txt $(BENCHCMP)
 	@echo "#snappy"
@@ -151,13 +151,13 @@ $(WORK)/megajson-$(NEW).txt: $(GO_NEW_BIN)
 	$(GO_NEW_BIN) get -u -v -d github.com/benbjohnson/megajson
 	cd $(GOPATH)/src/github.com/benbjohnson/megajson/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
-$(WORK)/nnetbench-$(OLD).txt: $(GO_OLD_BIN)
-	$(GO_OLD_BIN) get -u -v -d github.com/btracey/nnetbench
-	cd $(GOPATH)/src/github.com/btracey/nnetbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
+$(WORK)/netbench-$(OLD).txt: $(GO_OLD_BIN)
+	$(GO_OLD_BIN) get -u -v -d github.com/btracey/netbench
+	cd $(GOPATH)/src/github.com/btracey/netbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
-$(WORK)/nnetbench-$(NEW).txt: $(GO_NEW_BIN)
-	$(GO_NEW_BIN) get -u -v -d github.com/btracey/nnetbench
-	cd $(GOPATH)/src/github.com/btracey/nnetbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
+$(WORK)/netbench-$(NEW).txt: $(GO_NEW_BIN)
+	$(GO_NEW_BIN) get -u -v -d github.com/btracey/netbench
+	cd $(GOPATH)/src/github.com/btracey/netbench/.bench && $(GO_OLD_BIN) test $(TESTFLAGS) -test.run=XXX -test.bench=. . > $@
 
 $(WORK)/snappy-$(OLD).txt: $(GO_OLD_BIN)
 	$(GO_OLD_BIN) get -u -v -d code.google.com/p/snappy-go/snappy
